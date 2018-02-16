@@ -1,0 +1,74 @@
+% Rapport type en geen book
+\documentclass[a4paper,11pt,dutch]{report}
+% Nederlandstalige hoofdingen
+\usepackage[dutch]{babel}
+% Voor URL's
+\usepackage{hyperref}
+% Voor speciale opmaak figuren
+\usepackage[pdftex]{graphicx}   
+\usepackage{caption}
+\usepackage{subcaption}
+% voor ruimte tussen items in lijst te verwijderen
+\usepackage{enumitem}
+% Voor achtergrond titelblad
+\usepackage{afterpage}
+\usepackage[dvipsnames]{xcolor}
+% Hogent FBO blauw
+\definecolor{hogentblauw}{RGB}{13,126,201}
+% Andere fontsize voor titel
+\usepackage{anyfontsize}
+% Voor een cirkel met pijl op te tonen
+\usepackage{mathabx,graphicx}
+\def\CircleArrowleft{%
+	\ensuremath{%
+		\reflectbox{%
+			\rotatebox[origin=c]{120}{%
+				$\circlearrowleft$
+			}
+		}
+	}
+}
+% Plaatste automatisch het type bij verwijzing: hoofdstuk, sectie, ....
+\usepackage{cleveref}
+\usepackage{xspace}
+% Eigen definitiesvoor verwijzingen
+\def\verwijzing[#1]{%
+	(Zie \cref{#1} - \nameref{#1})\xspace
+}	
+\def\korteverwijzing[#1]{%
+	(\cref{#1})\xspace
+}
+% Om afbeeldingen beter te positioneren
+\usepackage{float}
+
+% Om multiline commentaar te kunnen toepassen
+\usepackage{verbatim}
+
+% Titel en auteur
+\title{Handleiding Trello}
+\author{
+	ing. Sebastiaan Labijn\\
+	Faculteit Bedrijf \& Organisatie\\
+	Hogeschool Gent
+}
+% Eigen definitie voor een paragraaf (met "newline" na titel van paragraaf)
+\newcommand{\paragraaf}[1]{\paragraph{#1}\mbox{}\\}
+% Eigen definitie van opmaak voor hoofdstuk omdat deze overschreven is door titelblad
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\sffamily\huge\bfseries\color{black}}
+{\chaptertitlename\ \thechapter}{22pt}{\Huge}
+% Het eigenlijke document opgebouwd uit de hoofdstukken
+\begin{document}
+	\include{./hoofdstukken/titelblad}
+	\tableofcontents
+	\listoffigures
+	\include{./hoofdstukken/inleiding}		
+	\include{./hoofdstukken/team_beheren}	
+	\include{./hoofdstukken/bord_beheren}	
+	\include{./hoofdstukken/lijsten_beheren}	
+	\include{./hoofdstukken/kaarten_beheren}	
+	\include{./hoofdstukken/leden_beheren}	
+	\include{./hoofdstukken/statistieken}	
+	\include{./hoofdstukken/powerups}	
+\end{document}
